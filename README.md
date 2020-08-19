@@ -6,4 +6,6 @@
 Repositório destinado às aulas do bootcamp GoStack 13 pela RocketSeat.
 <br><br>
 <h2>Módulo 01</h2>
+<h3>Back-End</h3>
+<p>Entendendo os <b>conceitos do NodeJS</b>, <b>API Rest</b>, <b>métodos HTTP</b>, <b>tipos de parâmetros</b>, <b>middlewares</b>, e por fim criando uma API de projetos usando <b>express</b> - sem persistência de dados ainda. </p>
 
