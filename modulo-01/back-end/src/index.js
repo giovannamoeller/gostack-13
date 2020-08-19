@@ -1,12 +1,35 @@
 const express = require('express');
-const { uuid } = require('uuidv4');
+const { uuid, isUuid } = require('uuidv4');
 
 const app = express();
 app.use(express.json());
 
 const projects = [];
 
+function logRequests(req, res, next) {
+    const { method, url } = req; // pega o método da requisição e sua URL
+    const logLabel = `[${method.toUpperCase()}] ${url}`;
+    console.log('1');
+    console.time(logLabel); 
+    next(); // executa primeiro o console.log('3') e depois volta para o middleware
+    console.log('2');
+    console.timeEnd(logLabel);
+}
+
+function validateProjectId(req, res, next) {
+    const { id } = req.params;
+
+    if(!isUuid(id)) {
+        return res.status(400).json({ error: 'Invalid ID project' });
+    }
+    next();
+}
+
+app.use(logRequests);
+app.use('/products/:id', validateProjectId); // só vai ser disparado em rotas desse tipo
+
 app.get('/projects', (req, res) => {
+    console.log('3');
     const { title } = req.query;
 
     const results = title ? 
