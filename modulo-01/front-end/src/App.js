@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 
 import './App.css';
-import picture from './assets/picture.jpeg';
+import api from './services/api';
 
 function App() {
 
-    const [projects, setProjects] = useState(['Desenvolvimento Web', 'UI Design']);
+    const [projects, setProjects] = useState([]); // inicializa com o mesmo tipo da variável
+
+    useEffect(() => {
+        api.get('/projects').then(response => {
+            setProjects(response.data);
+        })
+    }, []); /* se tiver vazio, vai executar apenas quando o componente for exibido em tela, 
+    se tiver variável, quando a variável alterar */
 
     function handleClickButton() {
         setProjects([...projects, `Novo projeto: ${Date.now()}`]);
@@ -15,9 +22,8 @@ function App() {
     return (
         <> 
             <Header title="Projects"/>
-            <img src={picture} width={300}/>
             <ul>
-                {projects.map(project => <li key={project}>{project}</li>)}
+                {projects.map(project => <li key={project.id}>{project.title}</li>)}
             </ul>
             <button type="button" onClick={handleClickButton}>
                 Adicionar projeto
