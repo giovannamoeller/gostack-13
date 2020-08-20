@@ -15,8 +15,12 @@ function App() {
     }, []); /* se tiver vazio, vai executar apenas quando o componente for exibido em tela, 
     se tiver variável, quando a variável alterar */
 
-    function handleClickButton() {
-        setProjects([...projects, `Novo projeto: ${Date.now()}`]);
+    async function handleAddProject() {
+        const response = await api.post('/projects', {
+            title: 'Desafio GoStack',
+            owner: 'Giovanna'
+        })
+        setProjects([...projects, response.data])
     }
 
     return (
@@ -25,7 +29,8 @@ function App() {
             <ul>
                 {projects.map(project => <li key={project.id}>{project.title}</li>)}
             </ul>
-            <button type="button" onClick={handleClickButton}>
+
+            <button type="button" onClick={handleAddProject}>
                 Adicionar projeto
             </button>
         </>
