@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 
+import './App.css';
+import picture from './assets/picture.jpeg';
+
 function App() {
 
     const [projects, setProjects] = useState(['Desenvolvimento Web', 'UI Design']);
@@ -12,6 +15,7 @@ function App() {
     return (
         <> 
             <Header title="Projects"/>
+            <img src={picture} width={300}/>
             <ul>
                 {projects.map(project => <li key={project}>{project}</li>)}
             </ul>
