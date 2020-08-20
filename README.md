@@ -9,7 +9,6 @@ Repositório destinado às aulas do bootcamp GoStack 13 pela RocketSeat.
 <h3>Back-End com NodeJS</h3>
 <p>Entendendo os <b>conceitos do NodeJS</b>, <b>API Rest</b>, <b>métodos HTTP</b>, <b>tipos de parâmetros</b>, <b>middlewares</b>, e por fim criando uma API de projetos usando <b>express</b> - sem persistência de dados ainda. </p>
 <br>
-<h2>Módulo 02</h2>
 <h3>Front-End com ReactJS</h3>
 <p>Entendendo os <b>conceitos do React</b>, configurando <b>babel</b> e <b>webpack</b>, entendendo sobre <b>componentização, propriedades, estado e imutabilidade</b>. Por fim, a aplicação consome dados da <b>API</b> criada no módulo passado.</p>
 
