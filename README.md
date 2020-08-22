@@ -13,4 +13,4 @@ Repositório destinado às aulas do bootcamp GoStack 13 pela RocketSeat.
 <h3>Mobile com React Native</h3>
 <p>Entendendo a <b>arquitetura do React Native</b>, configurando <b>SDK</b>, e <b>criando um novo projeto</b> que consome dados da <b>API</b> criada na parte de back-end, com nodeJS (listagem e criação de dados).
 <h3>TypeScript</h3>
-<p>Entendendo as <b>diferenças</b> do typescript para javascript e o motivo de ser necessário, configurando o <b>projeto</b>, e entendendo sobre quando e como adicionar <b>tipagens</b>.
+<p>Entendendo as <b>diferenças</b> do typescript para javascript e o motivo de ser necessário, configurando o <b>projeto</b> e entendendo sobre quando e como adicionar <b>tipagens</b>.
