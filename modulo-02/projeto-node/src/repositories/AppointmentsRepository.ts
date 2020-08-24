@@ -1,13 +1,21 @@
 // Persistência <-> Repositório <-> Rotas
 import Appointment from '../models/Appointment';
 import { isEqual } from 'date-fns';
-const appointments:Appointment[] = [];
+
+interface CreateAppointmentDTO {
+    provider: string;
+    date: Date;
+}
 
 class AppointmentsRepository {
     private appointments: Appointment[];
 
     constructor() {
         this.appointments = [];
+    }
+
+    public All() {
+        return this.appointments;
     }
 
     public findByDate(date: Date): Appointment | null {
@@ -18,8 +26,11 @@ class AppointmentsRepository {
         return findAppointmentInSameDate || null;
     }
 
-    public create(provider: string, date: Date) {
-        const appointment = new Appointment(provider, date);
+    public create({provider, date}: CreateAppointmentDTO) {
+        const appointment = new Appointment({
+            provider, 
+            date
+        });
 
         this.appointments.push(appointment);
 
