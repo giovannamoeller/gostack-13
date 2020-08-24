@@ -10,4 +10,7 @@ Repositório destinado às aulas do bootcamp GoStack 13 pela RocketSeat.
 <p>Entendendo os <b>conceitos do NodeJS</b>, <b>API Rest</b>, <b>métodos HTTP</b>, <b>tipos de parâmetros</b>, <b>middlewares</b>, e por fim criando uma API de projetos usando <b>express</b> - sem persistência de dados ainda. </p>
 <h3>Front-End com ReactJS</h3>
 <p>Entendendo os <b>conceitos do React</b>, configurando <b>babel</b> e <b>webpack</b>, entendendo sobre <b>componentização, propriedades, estado e imutabilidade</b>. Por fim, a aplicação consome dados da <b>API</b> criada no módulo passado.</p>
-
+<h3>Mobile com React Native</h3>
+<p>Entendendo a <b>arquitetura do React Native</b>, configurando <b>SDK</b>, e <b>criando um novo projeto</b> que consome dados da <b>API</b> criada na parte de back-end, com nodeJS (listagem e criação de dados).
+<h3>TypeScript</h3>
+<p>Entendendo as <b>diferenças</b> do typescript para javascript e o motivo de ser necessário, configurando o <b>projeto</b> e entendendo sobre quando e como adicionar <b>tipagens</b>.
