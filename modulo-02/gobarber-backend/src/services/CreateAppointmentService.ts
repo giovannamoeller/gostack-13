@@ -1,5 +1,8 @@
 import { startOfHour } from "date-fns";
+import { getCustomRepository } from 'typeorm';
+
 import AppointmentsRepository from "../repositories/AppointmentsRepository";
+import Appointment from "../models/Appointment";
 
 interface RequestDTO {
   provider: string;
@@ -7,25 +10,24 @@ interface RequestDTO {
 }
 
 class CreateAppointmentService {
-  private appointmentsRepository: AppointmentsRepository;
 
-  constructor(appointmentsRepository: AppointmentsRepository) {
-    this.appointmentsRepository = appointmentsRepository;
-  }
-  public execute({ date, provider }: RequestDTO) {
+  public async execute({ date, provider }: RequestDTO): Promise<Appointment> {
+
+    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+
     // todo service tem um único método
     const appointmentDate = startOfHour(date);
 
-    const findAppointment = this.appointmentsRepository.findByDate(
-      appointmentDate
-    );
+    const findAppointment = await appointmentsRepository.findByDate(appointmentDate);
 
     if (findAppointment) throw Error("This appointment is already booked");
 
-    const appointment = this.appointmentsRepository.create({
+    const appointment = appointmentsRepository.create({
       provider,
       date: appointmentDate,
     });
+
+    await appointmentsRepository.save(appointment)
 
     return appointment;
   }

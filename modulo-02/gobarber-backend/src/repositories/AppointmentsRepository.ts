@@ -1,40 +1,18 @@
 // Persistência <-> Repositório <-> Rotas
+import { EntityRepository, Repository } from 'typeorm';
+
 import Appointment from '../models/Appointment';
-import { isEqual } from 'date-fns';
 
-interface CreateAppointmentDTO {
-    provider: string;
-    date: Date;
-}
+@EntityRepository(Appointment)
+class AppointmentsRepository extends Repository<Appointment> {
 
-class AppointmentsRepository {
-    private appointments: Appointment[];
+    public async findByDate(date: Date): Promise<Appointment | null> {
 
-    constructor() {
-        this.appointments = [];
-    }
-
-    public All() {
-        return this.appointments;
-    }
-
-    public findByDate(date: Date): Appointment | null {
-        const findAppointmentInSameDate = this.appointments.find(appointment =>
-            isEqual(date, appointment.date)
-        );
-
-        return findAppointmentInSameDate || null;
-    }
-
-    public create({provider, date}: CreateAppointmentDTO) {
-        const appointment = new Appointment({
-            provider, 
-            date
+        const findAppointment = await this.findOne({
+            where: { date: date }, 
         });
 
-        this.appointments.push(appointment);
-
-        return appointment;
+        return findAppointment || null;
     }
 }
 
