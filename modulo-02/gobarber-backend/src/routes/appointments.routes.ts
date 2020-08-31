@@ -13,7 +13,6 @@ appointmentsRouter.use(ensureAuthenticated);
 // Rota: recebe a requisição, chama outro arquivo e devolve uma resposta
 
 appointmentsRouter.get("/", async (req, res) => {
-  console.log(req.user);
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
   const appointmentsList = await appointmentsRepository.find();
 
