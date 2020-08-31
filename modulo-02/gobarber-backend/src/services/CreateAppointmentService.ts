@@ -4,6 +4,9 @@ import { getCustomRepository } from 'typeorm';
 import AppointmentsRepository from "../repositories/AppointmentsRepository";
 import Appointment from "../models/Appointment";
 
+import AppError from '../errors/AppError';
+
+
 interface RequestDTO {
   provider_id: string;
   date: Date;
@@ -20,7 +23,7 @@ class CreateAppointmentService {
 
     const findAppointment = await appointmentsRepository.findByDate(appointmentDate);
 
-    if (findAppointment) throw Error("This appointment is already booked");
+    if (findAppointment) throw new AppError("This appointment is already booked", 401);
 
     const appointment = appointmentsRepository.create({
       provider_id,
