@@ -1,6 +1,5 @@
 import { getRepository } from 'typeorm';
 import bcrypt from 'bcrypt';
-
 import User from '../models/User';
 
 interface Request {
@@ -31,7 +30,7 @@ class CreateUserService {
         await userRepository.save(user);
         
         delete user.password;
-        
+
         return user;
     }
 
