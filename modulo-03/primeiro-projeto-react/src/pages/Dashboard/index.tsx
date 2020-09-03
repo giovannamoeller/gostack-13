@@ -1,9 +1,15 @@
 import React from 'react';
+import { Title } from './styles';
+
 
 const Dashboard: React.FC = () => { // consegue definir a tipagem da função mais fácil
     //React.FC = Function Component
-    return <h1>Dashboard</h1>
-    
+    return (
+        <div>
+            <Title>Explore repositórios no GitHub.</Title>
+        </div>
+    )
+
 }
 
 
