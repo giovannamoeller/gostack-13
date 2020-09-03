@@ -14,7 +14,6 @@ app.use(routes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if(err instanceof AppError) { // o erro foi originado pela minha aplicação
-    console.log('entrrooo')
     return res.status(err.statusCode).json({
       status: 'error',
       message: err.message
