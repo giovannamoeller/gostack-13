@@ -3,6 +3,7 @@ import { Title, Form, Repositories, Error } from "./styles";
 import logo from "../../assets/logo.svg";
 import { FiChevronRight, FiChevronsRight } from "react-icons/fi";
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 import api from '../../services/api';
@@ -62,7 +63,7 @@ const Dashboard: React.FC = () => {
     {inputError && <Error>{inputError}</Error>}
       <Repositories>
           {repositories.map(repository => (
-            <a href="#">
+            <Link to={`/repository/${repository.full_name}`} key={repository.full_name}>
             <img
                 src={repository.owner.avatar_url}
                 alt={repository.owner.login}
@@ -72,7 +73,7 @@ const Dashboard: React.FC = () => {
                 <p>{repository.description}</p>
             </div>
             <FiChevronRight size={20} />
-            </a>
+            </Link>
           ))}
       </Repositories>
     </div>
