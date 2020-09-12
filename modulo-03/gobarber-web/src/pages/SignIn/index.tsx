@@ -6,7 +6,7 @@ import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-const Login:React.FC = () => (
+const SignIn:React.FC = () => (
     <Container>
         <Content>
             <img src={logo} alt="GoBarber"/>
@@ -26,4 +26,4 @@ const Login:React.FC = () => (
     </Container>
 );
 
-export default Login;
+export default SignIn;
