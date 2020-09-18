@@ -36,6 +36,7 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
     <Container isFilled={isFilled} isFocused={isFocused}>
         {Icon && <Icon size={20}/>}
         <input ref={inputRef} {...rest} onFocus={handleInputFocus} onBlur={handleInputBlur}/>
+        {error}
     </Container>
   )
 };
