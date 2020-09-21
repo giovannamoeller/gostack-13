@@ -10,7 +10,7 @@ export default function getValidationErrors(err: ValidationError) {
 
     err.inner.forEach(error => {
         validationsErrors[error.path] = error.message;
-    })
+    });
     
     return validationsErrors;
 }
