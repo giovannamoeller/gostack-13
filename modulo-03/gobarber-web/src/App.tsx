@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import GlobalStyle from './styles/global';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
-import AuthContext from './context/AuthContext';
-const App:React.FC = () => (
+import { AuthProvider } from './context/AuthContext';
+
+const App:React.FC = () => {
+
+  return (
     <>
-      <AuthContext.Provider value={{name: 'Giovanna'}}>
+      <AuthProvider>
         <SignIn/> 
-      </AuthContext.Provider>
+      </AuthProvider>
       <GlobalStyle/>
     </>
-);
+  )
+}
 
 export default App;
