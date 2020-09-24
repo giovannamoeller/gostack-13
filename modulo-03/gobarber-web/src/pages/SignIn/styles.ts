@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import barberBackground from "../../assets/sign-in-background.png";
-import { shade } from 'polished'
+import { shade } from "polished";
 
 export const Container = styled.div`
   display: flex;
@@ -18,6 +18,29 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 700px;
+`;
+
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  animation: ${appearFromLeft} 1s;
 
   a {
     text-decoration: none;
@@ -29,7 +52,7 @@ export const Content = styled.div`
     transition: color 0.2s;
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')}
+      color: ${shade(0.2, "#ff9000")};
     }
   }
 
@@ -44,11 +67,11 @@ export const Content = styled.div`
 
     a {
       text-decoration: none;
-      color: #F4EDE8;
+      color: #f4ede8;
       transition: color 0.2s;
 
       &:hover {
-        color: ${shade(0.2, '#F4EDE8')}
+        color: ${shade(0.2, "#F4EDE8")};
       }
     }
   }
