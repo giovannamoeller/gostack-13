@@ -22,9 +22,12 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import { TextInput } from "react-native";
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const passwordRef = useRef<TextInput>(null);
+  const emailRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
   const handleSignUp = useCallback((data: object) => {
@@ -53,19 +56,38 @@ const SignUp: React.FC = () => {
               icon="user"
               placeholder="Nome"
               placeholderTextColor="#666360"
+              autoCapitalize="words"
+              autoCorrect={false}
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                emailRef.current?.focus();
+              }}
             />
             <Input
+              ref={emailRef}
               name="email"
               icon="mail"
               placeholder="E-mail"
               placeholderTextColor="#666360"
+              autoCorrect={false}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordRef.current?.focus();
+                }}
             />
             <Input
+              ref={passwordRef}
               name="password"
               icon="lock"
               placeholder="Senha"
               placeholderTextColor="#666360"
               secureTextEntry={true}
+              returnKeyType="send"
+              onSubmitEditing={() => {
+                formRef.current?.submitForm();
+              }}
             />
 
             <Button onPress={() => formRef.current?.submitForm()}>Cadastrar</Button>
