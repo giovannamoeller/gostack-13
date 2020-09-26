@@ -15,6 +15,7 @@ import Button from "../../components/Button";
 import Icon from "react-native-vector-icons/Feather";
 import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
 
 import {
   Container,
@@ -52,10 +53,15 @@ const SignUp: React.FC = () => {
             abortEarly: false,
         });
 
-        //await api.post('/users', data);
+        await api.post('/users', data);
 
         Alert.alert('Sucesso no cadastro', 
-          'Você já pode fazer seu login.');
+          'Você já pode fazer seu login.', 
+          [
+            { text: 'OK', onPress: () => navigation.navigate('SignIn')}
+          ]);
+
+        //navigation.navigate('SignIn');
 
 
     } catch(err) {
@@ -66,7 +72,7 @@ const SignUp: React.FC = () => {
 
             return;
         }   
-
+        console.log(err)
         Alert.alert('Erro no cadastro', 
           'Ocorreu um erro ao fazer cadastro, tente novamente.');
     }   
