@@ -1,10 +1,9 @@
-import CreateUserService from "./CreateUserService";
 import { getRepository } from 'typeorm';
 import bcrypt, { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
-import AppError from '../../../shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
 
-import authConfig from '../../../config/auth';
+import authConfig from '@config/auth';
 
 
 import User from '../infra/typeorm/entities/User';

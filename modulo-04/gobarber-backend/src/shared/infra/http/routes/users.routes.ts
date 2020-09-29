@@ -7,7 +7,7 @@ import AppointmentsRepository from "../../../../modules/appointments/repositorie
 import CreateUserService from "../../../../modules/users/services/CreateUserService";
 import CreateSessionService from "../../../../modules/users/services/CreateSessionService";
 import UpdateUserAvatarService from "../../../../modules/users/services/UpdateUserAvatarService";
-import ensureAuthentication from '../middlewares/ensureAuthentication';
+import ensureAuthentication from '../../../../modules/users/infra/middlewares/ensureAuthentication';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);

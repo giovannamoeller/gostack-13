@@ -1,8 +1,6 @@
 import { Router } from "express";
 
-import AppointmentsRepository from "../../../../modules/appointments/repositories/AppointmentsRepository";
-import CreateUserService from "../../../../modules/users/services/CreateUserService";
-import CreateSessionService from "../../../../modules/users/services/CreateSessionService";
+import CreateSessionService from "@modules/users/services/CreateSessionService";
 
 const sessionsRouter = Router();
 
