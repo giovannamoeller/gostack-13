@@ -2,12 +2,12 @@ import CreateUserService from "./CreateUserService";
 import { getRepository } from 'typeorm';
 import bcrypt, { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
-import AppError from '../errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
-import authConfig from '../config/auth';
+import authConfig from '../../../config/auth';
 
 
-import User from '../models/User';
+import User from '../infra/typeorm/entities/User';
 
 interface Request {
     email: string;
@@ -39,10 +39,9 @@ class CreateSessionService {
             expiresIn
         });
 
-
         // Usuário autenticado
 
-        return { user,  token}
+        return { user, token}
     }
 }
 

@@ -1,7 +1,7 @@
 // Persistência <-> Repositório <-> Rotas
 import { EntityRepository, Repository } from 'typeorm';
 
-import Appointment from '../models/Appointment';
+import Appointment from '../infra/typeorm/entities/Appointment';
 
 @EntityRepository(Appointment)
 class AppointmentsRepository extends Repository<Appointment> {

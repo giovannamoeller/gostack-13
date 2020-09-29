@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 
-import User from './User';
+import User from '../../../../users/infra/typeorm/entities/User';
 
 @Entity('appointments') // a classe é um parâmetro dessa entidade (decorators)
 class Appointment {

@@ -1,10 +1,8 @@
 import { Router } from "express";
-import { parseISO } from "date-fns";
-import { getCustomRepository } from "typeorm";
 
-import AppointmentsRepository from "../repositories/AppointmentsRepository";
-import CreateUserService from "../services/CreateUserService";
-import CreateSessionService from "../services/CreateSessionService";
+import AppointmentsRepository from "../../../../modules/appointments/repositories/AppointmentsRepository";
+import CreateUserService from "../../../../modules/users/services/CreateUserService";
+import CreateSessionService from "../../../../modules/users/services/CreateSessionService";
 
 const sessionsRouter = Router();
 
