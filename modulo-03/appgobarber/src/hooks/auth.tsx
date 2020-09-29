@@ -13,7 +13,6 @@ interface SignInCredentials {
     password: string;
 }
 
-
 interface AuthContextData {
     user: object;
     signIn(credentials: SignInCredentials): Promise<void>; 
