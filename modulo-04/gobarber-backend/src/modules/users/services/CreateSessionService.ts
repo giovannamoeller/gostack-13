@@ -7,21 +7,20 @@ import authConfig from '@config/auth';
 
 
 import User from '../infra/typeorm/entities/User';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface Request {
     email: string;
     password: string;
 }
 
-
 class CreateSessionService {
     
-    public async execute({ email, password }: Request): Promise<{ user: User, token: string }> {
-        const userRepository = getRepository(User);
+    constructor(private usersRepository: IUsersRepository){}
 
-        const user = await userRepository.findOne({
-            where: { email }
-        });
+    public async execute({ email, password }: Request): Promise<{ user: User, token: string }> {
+
+        const user = await this.usersRepository.findByEmail(email);
 
         if(!user) {
             throw new AppError('Incorrect email/password combination.', 401);
