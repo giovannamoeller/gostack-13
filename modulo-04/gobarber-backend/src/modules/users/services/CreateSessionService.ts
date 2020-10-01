@@ -8,15 +8,19 @@ import authConfig from '@config/auth';
 
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface Request {
     email: string;
     password: string;
 }
 
+@injectable()
 class CreateSessionService {
     
-    constructor(private usersRepository: IUsersRepository){}
+    constructor(
+        @inject('UsersRepository')
+        private usersRepository: IUsersRepository){}
 
     public async execute({ email, password }: Request): Promise<{ user: User, token: string }> {
 
