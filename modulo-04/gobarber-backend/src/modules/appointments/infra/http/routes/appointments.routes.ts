@@ -8,7 +8,6 @@ import CreateAppointmentService from "@modules/appointments/services/CreateAppoi
 import ensureAuthenticated from '@modules/users/infra/middlewares/ensureAuthentication';
 
 const appointmentsRouter = Router();
-const appointmentsRepository = new AppointmentsRepository();
 appointmentsRouter.use(ensureAuthenticated);
 
 // Rota: recebe a requisição, chama outro arquivo e devolve uma resposta
@@ -20,6 +19,8 @@ appointmentsRouter.use(ensureAuthenticated);
 });*/
 
 appointmentsRouter.post("/", async (req, res) => {
+    const appointmentsRepository = new AppointmentsRepository();
+
     const { provider_id, date } = req.body;
 
     const parsedDate = parseISO(date);

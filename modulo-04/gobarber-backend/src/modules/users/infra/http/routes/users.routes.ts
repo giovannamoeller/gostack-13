@@ -7,13 +7,14 @@ import UpdateUserAvatarService from "../../../services/UpdateUserAvatarService";
 import ensureAuthentication from '../../middlewares/ensureAuthentication';
 
 const usersRouter = Router();
-const usersRepository = new UsersRepository();
 
 const upload = multer(uploadConfig);
 // single -> upload unico arquivo
 // array -> upload de varios arquivos
 
 usersRouter.post('/', async (req, res) => {
+    const usersRepository = new UsersRepository();
+
     const { name, email, password } = req.body;
 
     const createUser = new CreateUserService(usersRepository);
@@ -25,6 +26,8 @@ usersRouter.post('/', async (req, res) => {
 });
 
 usersRouter.patch('/avatar', ensureAuthentication, upload.single('avatar'), async (req, res) => {
+    
+    const usersRepository = new UsersRepository();
   
     const updateUserAvatar = new UpdateUserAvatarService(usersRepository);
     const user = await updateUserAvatar.execute({
