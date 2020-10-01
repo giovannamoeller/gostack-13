@@ -3,7 +3,7 @@ import { parseISO } from "date-fns";
 import { getCustomRepository } from "typeorm";
 import multer from 'multer';
 import uploadConfig from '../../../../config/upload';
-import AppointmentsRepository from "../../../../modules/appointments/repositories/AppointmentsRepository";
+import AppointmentsRepository from "../../../../modules/appointments/infra/typeorm/repositories/AppointmentsRepository";
 import CreateUserService from "../../../../modules/users/services/CreateUserService";
 import CreateSessionService from "../../../../modules/users/services/CreateSessionService";
 import UpdateUserAvatarService from "../../../../modules/users/services/UpdateUserAvatarService";
