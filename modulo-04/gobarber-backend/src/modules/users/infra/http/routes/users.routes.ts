@@ -1,40 +1,20 @@
 import { Router } from "express";
 import multer from 'multer';
+
 import uploadConfig from '../../../../../config/upload';
-import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository";
-import CreateUserService from "../../../services/CreateUserService";
-import UpdateUserAvatarService from "../../../services/UpdateUserAvatarService";
 import ensureAuthentication from '../../middlewares/ensureAuthentication';
-import { container } from "tsyringe";
+import UserAvatarController from "../controllers/UserAvatarController";
+import UsersController from "../controllers/UsersController";
 
 const usersRouter = Router();
-
 const upload = multer(uploadConfig);
+const usersController = new UsersController();
+const userAvatarController = new UserAvatarController();
 // single -> upload unico arquivo
 // array -> upload de varios arquivos
 
-usersRouter.post('/', async (req, res) => {
+usersRouter.post('/', usersController.create);
 
-    const { name, email, password } = req.body;
-
-    const createUser = container.resolve(CreateUserService);
-
-    const user = await createUser.execute({ name, email, password });
-
-    return res.json(user);
-  
-});
-
-usersRouter.patch('/avatar', ensureAuthentication, upload.single('avatar'), async (req, res) => {
-      
-    const updateUserAvatar = container.resolve(UpdateUserAvatarService);
-    const user = await updateUserAvatar.execute({
-      user_id: req.user.id,
-      avatarFileName: req.file.filename,
-    });
-
-    return res.json(user)
-  
-});
+usersRouter.patch('/avatar', ensureAuthentication, upload.single('avatar'), userAvatarController.update);
 
 export default usersRouter;
