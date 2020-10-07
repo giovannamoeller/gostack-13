@@ -5,7 +5,8 @@ import crypto from 'crypto'; // gerar hashs
 const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
 
 export default {
-    directory: tmpFolder,
+    tmpFolder: tmpFolder,
+    uploadFolder: path.resolve(tmpFolder, 'uploads'),
 
     storage: multer.diskStorage({ // disk da máquina
         destination: tmpFolder,
