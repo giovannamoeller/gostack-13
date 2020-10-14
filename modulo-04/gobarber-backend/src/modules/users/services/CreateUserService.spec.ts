@@ -22,7 +22,7 @@ describe('CreateUser', () => {
         const createUser = new CreateUserService(fakeUsers, fakeHashProvider);
 
         await createUser.execute({ name: 'John Doe', email: 'johndoe@example.com', password: '123456'});
-        expect(createUser.execute({ name: 'John Doe', email: 'johndoe@example.com', password: '123456'}))
+        await expect(createUser.execute({ name: 'John Doe', email: 'johndoe@example.com', password: '123456'}))
             .rejects.toBeInstanceOf(AppError);
     });
 
