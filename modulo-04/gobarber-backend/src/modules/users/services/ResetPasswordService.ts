@@ -20,7 +20,7 @@ class ResetPasswordService {
         private usersRepository: IUsersRepository,
         @inject('UserTokenRepository')
         private userTokenRepository: IUserTokenRepository,
-        @inject('Hash Provider')
+        @inject('HashProvider')
         private hashProvider: IHashProvider,){}
 
     public async execute({ token, password }: Request): Promise<void> {
