@@ -11,16 +11,6 @@ class UsersController {
         const user = await createUser.execute({ name, email, password });
         return response.json(user);
     }
-
-    public async updateAvatar(request: Request, response: Response): Promise<Response> {
-        const updateUserAvatar = container.resolve(UpdateUserAvatarService);
-        const user = await updateUserAvatar.execute({
-        user_id: request.user.id,
-        avatarFileName: request.file.filename,
-        });
-
-        return response.json(user);
-    }
 }
 
 export default UsersController;
