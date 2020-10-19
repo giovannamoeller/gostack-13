@@ -15,6 +15,7 @@ describe('UpdateUserProfile', () => {
     beforeEach(() => {
         fakeStorageProvider = new FakeStorageProvider();
         fakeUsers = new FakeUsersRepository();
+        fakeHashProvider = new FakeHashProvider();
         updateUser = new UpdateUserProfileService(fakeUsers, fakeStorageProvider, fakeHashProvider);
     });
 
@@ -46,7 +47,7 @@ describe('UpdateUserProfile', () => {
         expect(updatedUser.password).toBe('123123');
     });
 
-    it("should be able to update password", async () => {
+    it("should not be able to update password without an old password", async () => {
 
         const user = await fakeUsers.create({ name: 'John Doe', email: 'johndoe@example.com', password: '123456' })
         
