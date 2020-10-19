@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for users/services/ResetPasswordService.ts</title>
+    <title>Code coverage report for users/services/UpdateUserProfileService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> ResetPasswordService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> UpdateUserProfileService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">77.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>31/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.82% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>18/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">84% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>21/25</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,8 +105,21 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -120,88 +133,117 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { inject, injectable } from 'tsyringe';
-import { isAfter, addHours } from 'date-fns';
-&nbsp;
-import User from '../infra/typeorm/entities/User';
-import AppError from '@shared/errors/AppError';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
-import IUserTokenRepository from '../repositories/IUserTokenRepository';
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
+import { inject, injectable } from 'tsyringe';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import User from '../infra/typeorm/entities/User';
 &nbsp;
 interface Request {
-    token: string;
-    password: string;
+    user_id: string;
+    name: string;
+    email: string;
+    old_password?: string;
+    password?: string;
 }
 &nbsp;
 @injectable()
-class ResetPasswordService {
-&nbsp;
+class UpdateUserProfileService {
+    
     constructor(
         @inject('UsersRepository')
         private usersRepository: IUsersRepository,
-        @inject('UserTokenRepository')
-        private userTokenRepository: IUserTokenRepository,
+        
+        @inject('StorageProvider')
+        private storageProvider: IStorageProvider,
+        
         @inject('HashProvider')
-        private hashProvider: IHashProvider,){}
+        private hashProvider: IHashProvider){}
 &nbsp;
-    public async execute({ token, password }: Request): Promise&lt;void&gt; {
-        const userToken = await this.userTokenRepository.findByToken(token);
+    public async execute({ user_id, name, email, old_password, password }: Request): Promise&lt;User&gt; {
+        const user = await this.usersRepository.findById(user_id);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(!user) <span class="cstat-no" title="statement not covered" >throw new AppError('User not found');</span>
 &nbsp;
-        if(!userToken) throw new AppError('O token não existe');
+        const userWithUpdatedEmail = await this.usersRepository.findByEmail(email);
 &nbsp;
-        const user = await this.usersRepository.findById(userToken.user_id);
+        if(userWithUpdatedEmail &amp;&amp; userWithUpdatedEmail.id !== user_id) throw new AppError('Email already in use.');
 &nbsp;
-        if(!user) throw new AppError('Usuário não existe');
+        if(password &amp;&amp; user.password !== old_password) throw new AppError('Password mismatch.');
 &nbsp;
-        const tokenCreatedAt = userToken.created_at;
-        const compareDate = addHours(tokenCreatedAt, 2);
+        user.name = name;
+        user.email = email;
 &nbsp;
-        if(isAfter(Date.now(), compareDate)) {
-            throw new AppError('Token expired');
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(password &amp;&amp; !old_password) {
+<span class="cstat-no" title="statement not covered" >            throw new AppError('You need to informe the old password to set a new password');</span>
         }
 &nbsp;
-        user.password = await this.hashProvider.generateHash(password);
+        if(password &amp;&amp; old_password) {
+&nbsp;
+            const <span class="cstat-no" title="statement not covered" >checkOldPassword = await this.hashProvider.compareHash(old_password, user.password);</span>
+    
+<span class="cstat-no" title="statement not covered" >            if(!checkOldPassword) <span class="cstat-no" title="statement not covered" >throw new AppError('Old password does not match.');</span></span>
+    
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            user.p</span>assword = <span class="cstat-no" title="statement not covered" >await this.hashProvider.generateHash(password);</span></span>
+<span class="cstat-no" title="statement not covered" >            console.log(user.password);</span>
+        }
+&nbsp;
 &nbsp;
         await this.usersRepository.save(user);
-    }
 &nbsp;
+        return user;
+    }
 }
 &nbsp;
-export default ResetPasswordService;</pre></td></tr></table></pre>
+export default UpdateUserProfileService;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

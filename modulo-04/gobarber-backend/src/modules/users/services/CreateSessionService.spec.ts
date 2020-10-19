@@ -5,14 +5,19 @@ import FakeUsersRepository from "../repositories/fakes/FakeUsersRepository";
 import FakeHashProvider from "../providers/HashProvider/fakes/FakeHashProvider";
 import AppError from '@shared/errors/AppError';
 
+let fakeUsers: FakeUsersRepository;
+let fakeHashProvider: FakeHashProvider;
+let authenticateUser: CreateSessionService;
+let createUser: CreateUserService;
 
 describe("CreateSession", () => {
+  beforeEach(() => {
+    fakeUsers = new FakeUsersRepository();
+    fakeHashProvider = new FakeHashProvider();
+    authenticateUser = new CreateSessionService(fakeUsers, fakeHashProvider);
+    createUser = new CreateUserService(fakeUsers, fakeHashProvider);
+  })
   it("should be able to authenticate", async () => {
-    const fakeUsers = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-    const authenticateUser = new CreateSessionService(fakeUsers, fakeHashProvider);
-
-    const createUser = new CreateUserService(fakeUsers, fakeHashProvider);
 
     const user = await createUser.execute({
       name: "John Doe",
@@ -29,9 +34,6 @@ describe("CreateSession", () => {
   });
 
   it("should be not be able to authenticate with non existing user", async () => {
-    const fakeUsers = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-    const authenticateUser = new CreateSessionService(fakeUsers, fakeHashProvider);
 
     await expect(authenticateUser.execute({
       email: "johndoe@example.com",
@@ -40,11 +42,6 @@ describe("CreateSession", () => {
   });
 
   it("should not be able to authenticate with wrong email or password", async () => {
-    const fakeUsers = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-    const authenticateUser = new CreateSessionService(fakeUsers, fakeHashProvider);
-
-    const createUser = new CreateUserService(fakeUsers, fakeHashProvider);
 
     await createUser.execute({
       name: "John Doe",
