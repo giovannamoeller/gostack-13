@@ -14,6 +14,13 @@ class Appointment {
     @ManyToOne(() => User)
     @JoinColumn({ name: 'provider_id' })
     provider: User;
+
+    @Column() 
+    user_id: string;
+
+    @ManyToOne(() => User) // 1 usuário pode realizar vários atendimentos -> é um relacionamento, não é convertido para o banco
+    @JoinColumn({ name: 'user_id' })
+    user: User;
     
     @Column('timestamp with time zone')
     date: Date;
