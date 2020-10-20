@@ -1,9 +1,10 @@
 // Persistência <-> Repositório <-> Rotas
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository, Raw } from 'typeorm';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 
 import Appointment from '../entities/Appointment';
+import IFindAllInMonthProviderDTO from '@modules/appointments/dtos/IFindAllInMonthProviderDTO';
 
 class AppointmentsRepository implements IAppointmentsRepository {
     private ormRepository: Repository<Appointment>;
@@ -27,6 +28,24 @@ class AppointmentsRepository implements IAppointmentsRepository {
         await this.ormRepository.save(appointment);
 
         return appointment;
+    }
+
+    public async findAllInMonthFromProvider({ provider_id, month, year }: IFindAllInMonthProviderDTO): Promise<Appointment[]> {
+        const parsedMonth = String(month).padStart(2, '0');
+        // se a minha string não tiver 2 dígitos, eu quero que preencha os dígitos a esquerda com 0.
+        
+        const appointments = await this.ormRepository.find({
+            where: {
+                provider_id,
+                date: Raw(dateFieldName => 
+                    `to_char(${dateFieldName}, 'MM-YYYY') = '${parsedMonth}-${year}'`) // RAW - passa para o banco sem nenhuma tratativa
+                    // to_char = converte para string
+            },
+        });
+
+        await this.ormRepository.save(appointments);
+
+        return appointments;
     }
 }
 
