@@ -2,10 +2,12 @@ import { Router } from "express";
 
 import ensureAuthenticated from '@modules/users/infra/middlewares/ensureAuthentication';
 import AppointmentsController from "../controllers/AppointmentsController";
+import ProviderAppointmentsController from "../controllers/ProviderAppointmentsController";
 
 const appointmentsRouter = Router();
 appointmentsRouter.use(ensureAuthenticated);
 const appointmentsController = new AppointmentsController();
+const providersController = new ProviderAppointmentsController();
 
 // Rota: recebe a requisição, chama outro arquivo e devolve uma resposta
 
@@ -16,5 +18,6 @@ const appointmentsController = new AppointmentsController();
 });*/
 
 appointmentsRouter.post("/", appointmentsController.create);
+appointmentsRouter.post("/me", providersController.index);
 
 export default appointmentsRouter;
