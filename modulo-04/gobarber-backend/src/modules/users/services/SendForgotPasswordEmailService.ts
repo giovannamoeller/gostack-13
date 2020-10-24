@@ -42,7 +42,7 @@ class SendForgotPasswordEmailService {
                 variables: {
                     name: user.name,
                     token,
-                    link: "https://google.com.br"
+                    link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`
                 }
             }
         });
