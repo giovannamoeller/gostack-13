@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
 
 import UpdateUserProfileService from "@modules/users/services/UpdateUserProfileService";
 import ShowProfileService from '@modules/users/services/ShowProfileService'
@@ -26,7 +27,7 @@ class ProfileController {
 
         const user = await updateProfile.execute({ user_id, name, email, old_password, password });
 
-        return response.json(user);
+        return response.json(classToClass(user));
     }
 }
 
