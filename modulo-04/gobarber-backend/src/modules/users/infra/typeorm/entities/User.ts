@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 import { Exclude, Expose } from 'class-transformer';
+import uploadConfig from '@config/upload';
 
 @Entity('users') // a classe é um parâmetro dessa entidade (decorators)
 class User {
@@ -27,8 +28,15 @@ class User {
     updated_at: Date;
 
     @Expose({name: "avatar_url"}) // expor um novo campo que não existe dentro da classe
+    
     getAvatarUrl(): string | null {
-        return this.avatar ? `${process.env.APP_API_URL}/files/${this.avatar}` : null
+        if(!this.avatar) return null;
+
+        switch(uploadConfig.driver) {
+            case 'disk': return `${process.env.APP_API_URL}/files/${this.avatar}`;
+            case 's3': return `` // url da amazon S3
+            // https://nome-bucket.s3.amazonaws.com/this.avatar
+        }
     }
 };
 

@@ -11,6 +11,6 @@ sessionsRouter.post("/", celebrate({
         email: Joi.string().email().required(),
         password: Joi.string().required(),
     }
-}), sessionController.create);
+}) ,sessionController.create);
 
 export default sessionsRouter;
