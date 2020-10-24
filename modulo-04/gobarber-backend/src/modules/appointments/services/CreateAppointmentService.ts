@@ -16,12 +16,12 @@ interface RequestDTO {
 
 @injectable()
 class CreateAppointmentService {
-
   constructor (
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
+    
     @inject('NotificationsRepository')
-    private notificationsRepository: INotificationsRepository,
+    private notificationsRepository: INotificationsRepository
   ) {}
 
   public async execute({ date, provider_id, user_id }: RequestDTO): Promise<Appointment> {
@@ -48,6 +48,7 @@ class CreateAppointmentService {
 
     if (findAppointment) throw new AppError("This appointment is already booked", 401);
 
+    console.log(appointmentDate);
     const appointment = await this.appointmentsRepository.create({
       provider_id,
       user_id,

@@ -16,7 +16,7 @@ app.use('/files', express.static(uploadConfig.uploadFolder));
 app.use(express.json());
 app.use(routes);
 
-app.use(errors);
+app.use(errors());
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if(err instanceof AppError) { // o erro foi originado pela minha aplicação
@@ -25,6 +25,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       message: err.message
     });
   } 
+  console.log(err);
   return res.status(500).json({
     status: 'error',
     message: 'Internal server error'

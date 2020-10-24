@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { celebrate, Segments, Joi } from 'celebrate'; // Segmentos => podemos validar req.body, req.query, req.params, req.header;
+import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/infra/middlewares/ensureAuthentication';
 import AppointmentsController from "../controllers/AppointmentsController";
 import ProviderAppointmentsController from "../controllers/ProviderAppointmentsController";
@@ -18,11 +18,12 @@ const providersController = new ProviderAppointmentsController();
 });*/
 
 
-appointmentsRouter.post("/", celebrate({
-  [Segments.BODY]: { // [] pois não conseguimos dar o nome de Segments.BODY
-    provider_id: Joi.string().uuid().required(),
-    date: Joi.date()
-  }
+appointmentsRouter.post("/", 
+  celebrate({
+    [Segments.BODY]: { // [] pois não conseguimos dar o nome de Segments.BODY
+      provider_id: Joi.string().uuid().required(),
+      date: Joi.date(),
+    }, 
 }), appointmentsController.create);
 
 

@@ -53,7 +53,6 @@ class UpdateUserProfileService {
             console.log(user.password);
         }
 
-
         await this.usersRepository.save(user);
 
         return user;

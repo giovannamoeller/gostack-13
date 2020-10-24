@@ -1,7 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
 
-import User from '../infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IUserTokenRepository from '../repositories/IUserTokenRepository';
