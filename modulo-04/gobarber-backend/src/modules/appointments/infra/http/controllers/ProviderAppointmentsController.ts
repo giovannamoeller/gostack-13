@@ -5,7 +5,7 @@ import ListProviderAppointmentsService from "@modules/appointments/services/List
 
 class ProviderAppointmentsController {
     public async index (request: Request, response: Response): Promise<Response> {
-        const { id: provider_id } = request.params;
+        const provider_id  = request.user.id;
         const { day, month, year } = request.body;
 
         const listProviderAppointments = container.resolve(ListProviderAppointmentsService);

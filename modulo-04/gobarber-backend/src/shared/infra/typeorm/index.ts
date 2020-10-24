@@ -1,4 +1,4 @@
 // Conexão com banco de dados
-import { createConnection } from 'typeorm';
+import { createConnections } from 'typeorm';
 
-createConnection();
+createConnections();
