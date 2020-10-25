@@ -4,18 +4,21 @@ import CreateUserService from "./CreateUserService";
 import FakeUsersRepository from "../repositories/fakes/FakeUsersRepository";
 import FakeHashProvider from "../providers/HashProvider/fakes/FakeHashProvider";
 import AppError from '@shared/errors/AppError';
+import FakeCacheProvider from "@shared/container/providers/CacheProvider/fakes/FakeCacheProvider";
 
 let fakeUsers: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
 let authenticateUser: CreateSessionService;
 let createUser: CreateUserService;
+let fakeCacheProvider: FakeCacheProvider;
 
 describe("CreateSession", () => {
   beforeEach(() => {
     fakeUsers = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
+    fakeCacheProvider = new FakeCacheProvider();
     authenticateUser = new CreateSessionService(fakeUsers, fakeHashProvider);
-    createUser = new CreateUserService(fakeUsers, fakeHashProvider);
+    createUser = new CreateUserService(fakeUsers, fakeHashProvider, fakeCacheProvider);
   })
   it("should be able to authenticate", async () => {
 

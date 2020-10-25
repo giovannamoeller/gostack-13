@@ -2,14 +2,18 @@ import 'reflect-metadata';
 
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import ListProvidersService from './ListProvidersService';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 
 let fakeUsers: FakeUsersRepository;
 let listProviders: ListProvidersService;
+let fakeCacheProvider: FakeCacheProvider;
+
 
 describe('ListProviders', () => {
     beforeEach(() => {
         fakeUsers = new FakeUsersRepository();
-        listProviders = new ListProvidersService(fakeUsers);
+        fakeCacheProvider = new FakeCacheProvider();
+        listProviders = new ListProvidersService(fakeUsers, fakeCacheProvider);
     });
 
     it("should be able to list providers except the one that is authenticate", async () => {

@@ -6,6 +6,7 @@ import Appointment from "../infra/typeorm/entities/Appointment";
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 import AppError from '@shared/errors/AppError';
 import INotificationsRepository from "@modules/notifications/repositories/INotificationsRepository";
+import ICacheProvider from "@shared/container/providers/CacheProvider/models/ICacheProvider";
 
 
 interface RequestDTO {
@@ -19,9 +20,12 @@ class CreateAppointmentService {
   constructor (
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
-    
+
     @inject('NotificationsRepository')
-    private notificationsRepository: INotificationsRepository
+    private notificationsRepository: INotificationsRepository,
+
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider
   ) {}
 
   public async execute({ date, provider_id, user_id }: RequestDTO): Promise<Appointment> {
@@ -48,7 +52,6 @@ class CreateAppointmentService {
 
     if (findAppointment) throw new AppError("This appointment is already booked", 401);
 
-    console.log(appointmentDate);
     const appointment = await this.appointmentsRepository.create({
       provider_id,
       user_id,
@@ -60,6 +63,8 @@ class CreateAppointmentService {
     await this.notificationsRepository.create({
         recipient_id: provider_id,
         content: `Novo agendamento para dia: ${formattedDate} `});
+
+    await this.cacheProvider.invalidatePrefix(`provider-appointments:${provider_id}:${format(appointmentDate, 'yyyy-M-d')}`);
 
     return appointment;
 
