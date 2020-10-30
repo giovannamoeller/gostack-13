@@ -18,7 +18,11 @@ class Appointment {
     @Column() 
     user_id: string;
 
-    @ManyToOne(() => User) // 1 usuário pode realizar vários atendimentos -> é um relacionamento, não é convertido para o banco
+    @ManyToOne(() => User) // eager: automaticamente quando trazermos os dados do appointment ele vai trazer os do usuário
+    // problema = vai ter vezes que queremos trazer os dados do appointment sem trazer os dados do usuário
+
+    // lazy = buscar dados de um usuário através de appointments.user;
+    // 1 usuário pode realizar vários atendimentos -> é um relacionamento, não é convertido para o banco
     @JoinColumn({ name: 'user_id' })
     user: User;
     
