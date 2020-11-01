@@ -42,8 +42,6 @@ const ResetPassword:React.FC = () => {
             
             if(!token) throw new Error();
 
-            console.log(token);
-
             await api.post('/password/reset', {
                 password: data.password,
                 password_confirmation: data.password_confirmation,
@@ -58,7 +56,7 @@ const ResetPassword:React.FC = () => {
                 const errors = getValidationErrors(err);
 
                 formRef.current?.setErrors(errors);
-
+ 
                 return;
             }
 
@@ -67,7 +65,7 @@ const ResetPassword:React.FC = () => {
                 title: 'Erro ao resetar senha',
                 description: 'Ocorreu um erro ao resetar sua senha, tente novamente.'
             });
-
+ 
         }   
     }, [addToast, location.search, history]);
     
