@@ -50,8 +50,13 @@ export const Profile = styled.div`
     line-height: 24px;
     color: #f4ede8;
 
-    strong {
-      color: #ff9000;
+    a {
+      text-decoration: none;
+      color: #FF9000;
+      transition: color 0.2s;
+      &:hover {
+        color: ${shade(0.2, '#FF9000')};
+      }
     }
   }
 `;
@@ -155,6 +160,10 @@ export const Section = styled.section`
     display: block;
     padding-bottom: 16px;
     margin-bottom: 16px;
+  }
+
+  > p {
+      color: #999591;
   }
 `;
 

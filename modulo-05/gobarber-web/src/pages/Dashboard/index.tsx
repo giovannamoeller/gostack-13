@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DayPicker, { DayModifiers } from "react-day-picker";
-import { isToday, format, parseISO } from 'date-fns';
+import { isToday, format, parseISO, isAfter } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import "react-day-picker/lib/style.css"; // importa o estilos padrões
 
@@ -20,6 +20,7 @@ import logo from "../../assets/logo.svg";
 import { FiClock, FiPower } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 interface MonthAvailabilityItem {
     day: number;
@@ -45,7 +46,7 @@ const DashBoard: React.FC = () => {
   const { signOut, user } = useAuth();
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
-    if (modifiers.available) {
+    if (modifiers.available && !modifiers.disabled) {
       setSelectedDate(day);
     }
   }, []);
@@ -127,6 +128,12 @@ const DashBoard: React.FC = () => {
     });
   }, [appointments]);
 
+  const nextAppointment = useMemo(() => {
+    return appointments.find(appointment => {
+        isAfter(parseISO(appointment.date), new Date());
+    });
+  }, [appointments]);
+
   return (
     <Container>
       <Header>
@@ -136,7 +143,7 @@ const DashBoard: React.FC = () => {
             {user.avatar_url && <img src={user.avatar_url} alt={user.name} />}
             <div>
               <span>Bem vindo(a),</span>
-              <strong>{user.name}</strong>
+                <Link to="/profile"><strong>{user.name}</strong></Link>
             </div>
           </Profile>
 
@@ -154,24 +161,30 @@ const DashBoard: React.FC = () => {
             <span>{selectedDateAsText}</span>
             <span>{selectedWeekDayAsText}</span>
           </p>
-
-          <NextAppointment>
-            <strong>Atendimento a seguir</strong>
-            <div>
-              <img
-                src="https://avatars1.githubusercontent.com/u/47362960?s=460&u=99702db3dedab50f47b0f151acea1e2e9db1b3fc&v=4"
-                alt=""
-              />
-              <strong>Giovanna Moeller</strong>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-            </div>
-          </NextAppointment>
+          {isToday(selectedDate) && nextAppointment && (
+            <NextAppointment>
+                <strong>Agendamento a seguir</strong>
+                <div>
+                <img
+                    src={nextAppointment.user.avatar_url}
+                    alt={nextAppointment.user.name}
+                />
+                <strong>{nextAppointment.user.name}</strong>
+                <span>
+                    <FiClock />
+                    {nextAppointment.hourFormatted}
+                </span>
+                </div>
+            </NextAppointment>
+          )}
 
           <Section>
             <strong>Manhã</strong>
+
+            {morningAppointments.length === 0 && (
+                <p>Nenhum agendamento nesse período.</p>
+            )}
+
             {morningAppointments.map(appointment => (
                 <Appointment key={appointment.id}>
                 <span>
@@ -194,7 +207,11 @@ const DashBoard: React.FC = () => {
           <Section>
             <strong>Tarde</strong>
 
-            {morningAppointments.map(appointment => (
+            {afternoonAppointments.length === 0 && (
+                <p>Nenhum agendamento nesse período.</p>
+            )}
+
+            {afternoonAppointments.map(appointment => (
                 <Appointment key={appointment.id}>
                 <span>
                     <FiClock />
@@ -203,7 +220,6 @@ const DashBoard: React.FC = () => {
 
                 <div>
                     <img
-
                     src={appointment.user.avatar_url}
                     alt={appointment.user.name}
                     />
