@@ -32,6 +32,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     }
 
     public async findAllInMonthFromProvider({ provider_id, month, year }: IFindAllInMonthProviderDTO): Promise<Appointment[]> {
+        
         const parsedMonth = String(month).padStart(2, '0');
         // se a minha string não tiver 2 dígitos, eu quero que preencha os dígitos a esquerda com 0.
         

@@ -25,6 +25,7 @@ class ListProviderMonthAvailabilityService {
     ){}
 
     public async execute({ provider_id, month, year }: Request): Promise<Response> {
+
         const appointments = await this.appointmentsRepository.findAllInMonthFromProvider({
             provider_id,
             month,
