@@ -13,9 +13,9 @@ import '@shared/infra/typeorm';
 import '@shared/container';
 
 const app = express();
-app.use(RateLimiter);
 app.use(cors());
 app.use('/files', express.static(uploadConfig.uploadFolder));
+app.use(RateLimiter);
 app.use(express.json());
 app.use(routes);
 
