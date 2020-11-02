@@ -111,7 +111,7 @@ const DashBoard: React.FC = () => {
                   ...appointment,
                   hourFormatted: format(parseISO(appointment.date), 'HH:mm')
               }
-          })
+          });
           setAppointments(appointmentFormatted);
       });  
   }, [selectedDate]);
@@ -129,8 +129,9 @@ const DashBoard: React.FC = () => {
   }, [appointments]);
 
   const nextAppointment = useMemo(() => {
+    console.log(appointments);
     return appointments.find(appointment => {
-        isAfter(parseISO(appointment.date), new Date());
+        return isAfter(parseISO(appointment.date), new Date());
     });
   }, [appointments]);
 
@@ -160,6 +161,7 @@ const DashBoard: React.FC = () => {
             {isToday(selectedDate) && <span>Hoje</span>}
             <span>{selectedDateAsText}</span>
             <span>{selectedWeekDayAsText}</span>
+            {console.log(nextAppointment)}
           </p>
           {isToday(selectedDate) && nextAppointment && (
             <NextAppointment>
@@ -181,12 +183,17 @@ const DashBoard: React.FC = () => {
           <Section>
             <strong>Manhã</strong>
 
+            
+
+
             {morningAppointments.length === 0 && (
                 <p>Nenhum agendamento nesse período.</p>
             )}
 
             {morningAppointments.map(appointment => (
+              
                 <Appointment key={appointment.id}>
+                  
                 <span>
                     <FiClock />
                     {appointment.hourFormatted}
