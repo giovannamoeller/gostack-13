@@ -43,7 +43,7 @@ const SignIn: React.FC = () => {
   const passwordRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
-  const { signIn, user } = useAuth();
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {
@@ -62,7 +62,7 @@ const SignIn: React.FC = () => {
             password: data.password
         });
 
-       // history.push('/dashboard');
+        
 
     } catch(err) {
         
@@ -76,9 +76,8 @@ const SignIn: React.FC = () => {
 
         Alert.alert('Erro na autenticação', 
           'Ocorreu um erro ao fazer login, cheque as credenciais.');
-
     }   
-}, []);
+}, [signIn]);
 
   return (
     <>

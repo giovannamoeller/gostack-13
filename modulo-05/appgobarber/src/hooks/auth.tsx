@@ -46,11 +46,12 @@ const AuthProvider:React.FC = ({children}) => {
             email,
             password
         });
-        
         const { token, user } = response.data;
         // multiSet -> seta várias propriedades ao mesmo tempo
         await AsyncStorage.setItem('@GoBarber:token', token);
         await AsyncStorage.setItem('@GoBarber:user', JSON.stringify(user));
+
+        api.defaults.headers.authorization = `Bearer ${token[1]}`;
 
         setData({token, user});
 
